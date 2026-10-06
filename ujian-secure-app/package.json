@@ -1,0 +1,18 @@
+{
+  "name": "ujian-secure-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Exam Lockdown App — frontend + Capacitor Android wrapper",
+  "scripts": {
+    "sync": "cap sync android",
+    "open:android": "cap open android",
+    "copy": "cap copy"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.0",
+    "@capacitor/android": "^6.1.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.0"
+  }
+}

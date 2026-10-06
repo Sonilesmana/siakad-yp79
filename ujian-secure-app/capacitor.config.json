@@ -1,0 +1,13 @@
+{
+  "appId": "id.ac.sekolah.ujiansecure",
+  "appName": "Ujian Secure",
+  "webDir": "web",
+  "backgroundColor": "#0f172a",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {},
+  "server": {
+    "cleartext": false
+  }
+}

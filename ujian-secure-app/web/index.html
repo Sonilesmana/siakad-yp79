@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https:; img-src 'self' data:; style-src 'self'; script-src 'self';" />
+<title>Ujian Secure — Lockdown</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- Watermark identitas bergerak (anti-foto) -->
+<div id="watermark" aria-hidden="true"></div>
+
+<!-- ============ LAYAR 1: LOGIN TOKEN ============ -->
+<section id="screen-login" class="screen active">
+  <div class="card">
+    <h1>🔒 Ujian Secure</h1>
+    <p class="muted">Mode Lockdown. Baca aturan sebelum mulai.</p>
+    <ol class="rules">
+      <li>Wajib <b>fullscreen</b> selama ujian.</li>
+      <li>Keluar fullscreen / pindah tab / resize = <b>pelanggaran</b>.</li>
+      <li><b>3x pelanggaran = auto-submit + flag curang.</b></li>
+      <li>Dilarang: klik kanan, copy-paste, screenshot, screen-record, browser/AI/overlay.</li>
+    </ol>
+    <label>Server Ujian
+      <input id="in-server" type="url" value="" placeholder="https://ujian.sekolah.ac.id" autocomplete="off" />
+    </label>
+    <label>Token Ujian (sekali pakai dari SIAKAD)
+      <input id="in-token" type="text" placeholder="EXAM-XXXX-XXXX" autocomplete="off" />
+    </label>
+    <label>Nama / NIM (untuk watermark)
+      <input id="in-name" type="text" placeholder="Nama — NIM" autocomplete="off" />
+    </label>
+    <button id="btn-start">Mulai Ujian (masuk fullscreen)</button>
+    <p id="login-msg" class="msg"></p>
+    <p class="muted small">Offline? Soal cache + jawaban antre, terkirim otomatis saat online.</p>
+  </div>
+</section>
+
+<!-- ============ LAYAR 2: UJIAN ============ -->
+<section id="screen-exam" class="screen">
+  <header id="exam-header">
+    <div id="exam-title">Ujian</div>
+    <div id="exam-meta">
+      <span id="timer" title="Waktu tersisa (sinkron server)">--:--:--</span>
+      <span id="viol-badge" title="Jumlah pelanggaran">⚠️ 0/3</span>
+      <span id="net-badge" title="Status koneksi">🟢 online</span>
+    </div>
+  </header>
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+  <main id="exam-body">
+    <aside id="qnav" aria-label="Navigasi soal"></aside>
+    <article id="qcard">
+      <h2 id="q-number">Soal 1</h2>
+      <p id="q-text"></p>
+      <div id="q-options"></div>
+      <div id="q-navbtns">
+        <button id="btn-prev">← Sebelumnya</button>
+        <button id="btn-next">Berikutnya →</button>
+        <button id="btn-finish" class="danger">Selesaikan &amp; Kumpulkan</button>
+      </div>
+    </article>
+  </main>
+</section>
+
+<!-- ============ LAYAR 3: SELESAI ============ -->
+<section id="screen-done" class="screen">
+  <div class="card">
+    <h1 id="done-title">Ujian selesai</h1>
+    <p id="done-msg"></p>
+    <pre id="done-detail"></pre>
+  </div>
+</section>
+
+<script src="exam.js"></script>
+</body>
+</html>
